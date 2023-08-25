@@ -21,13 +21,7 @@ const localizer = dateFnsLocalizer({
 });
 
 const events = [
-    {
-        title: "Big Meeting",
-        allDay: true,
-        start: new Date(2023, 8, 10),
-        end: new Date(2023, 8, 17),
-    },
-    {
+      {
         title: "Vacation",
         start: new Date(2021, 6, 7),
         end: new Date(2021, 6, 10),
@@ -40,7 +34,7 @@ const events = [
 ];
 
 function App() {
-    const [newEvent, setNewEvent] = useState({ title: "", description: "", location: "", start: "", end: "" });
+    const [newEvent, setNewEvent] = useState({ title: "", description: "", location: "", startTime: "", startDate: "" });
     const [allEvents, setAllEvents] = useState(events);
 
     function handleAddEvent() {
@@ -84,9 +78,14 @@ function App() {
                 <br></br>
                 <input type="text" placeholder="Add a Locatation" style={{ width: "20%", marginRight: "10px" }} value={newEvent.location} onChange={(e) => setNewEvent({ ...newEvent, location: e.target.value })} />
                 <br></br>
-                <DatePicker placeholderText="Start Date" style={{ marginRight: "10px" }} selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
+                <DatePicker placeholderText="Start Date" style={{ marginRight: "10px" }} selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })}
+                showTimeSelect
+                dateFormat="Pp" />
                 <br></br>
-                <DatePicker placeholderText="End Date" selected={newEvent.end} onChange={(end) => setNewEvent({ ...newEvent, end })} />
+                <DatePicker placeholderText="End Date" selected={newEvent.end} onChange={(end) => setNewEvent({ ...newEvent, end })}
+                showTimeSelect
+                dateFormat="Pp"
+                />
                 <br></br>
                 <button stlye={{ marginTop: "10px" }} onClick={handleAddEvent}>
                     Add Event
