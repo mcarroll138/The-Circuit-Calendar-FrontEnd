@@ -40,7 +40,7 @@ const events = [
 ];
 
 function App() {
-    const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
+    const [newEvent, setNewEvent] = useState({ title: "", description: "", location: "", start: "", end: "" });
     const [allEvents, setAllEvents] = useState(events);
 
     function handleAddEvent() {
@@ -78,9 +78,16 @@ function App() {
             <h1>Calendar</h1>
             <h2>Add New Event</h2>
             <div>
-                <input type="text" placeholder="Add Title" style={{ width: "20%", marginRight: "10px" }} value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
+                <input type="text" placeholder="Add a Title" style={{ width: "20%", marginRight: "10px" }} value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
+                <br></br>
+                <input type="textbox" placeholder="Description" style={{ width: "20%", marginRight: "10px" }} value={newEvent.description} onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })} />
+                <br></br>
+                <input type="text" placeholder="Add a Locatation" style={{ width: "20%", marginRight: "10px" }} value={newEvent.location} onChange={(e) => setNewEvent({ ...newEvent, location: e.target.value })} />
+                <br></br>
                 <DatePicker placeholderText="Start Date" style={{ marginRight: "10px" }} selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
+                <br></br>
                 <DatePicker placeholderText="End Date" selected={newEvent.end} onChange={(end) => setNewEvent({ ...newEvent, end })} />
+                <br></br>
                 <button stlye={{ marginTop: "10px" }} onClick={handleAddEvent}>
                     Add Event
                 </button>
